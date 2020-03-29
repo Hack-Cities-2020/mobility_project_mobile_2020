@@ -13,6 +13,12 @@ class MyApp extends StatelessWidget {
       title: 'La Paz Bus GPS Tracker App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: TextTheme(
+          body1: TextStyle(
+              // color: Colors.white,
+              ),
+        ),
+        // iconTheme: IconThemeData(color: Colors.white),
       ),
       home: HomePage(),
     );
