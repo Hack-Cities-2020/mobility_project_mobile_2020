@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:mobility_project_mobile_2020/src/ui/widgets/bus_drawer.widget.dart';
 import 'package:mobility_project_mobile_2020/src/ui/widgets/bus_visual_indicator.widget.dart';
 
 import 'widgets/app_bar_title_text.widget.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: BusDrawer(),
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: Center(
@@ -76,39 +78,3 @@ Widget _buildIndicadorBuses() {
     ),
   );
 }
-
-// Container(
-//         child: StreamBuilder(
-//           stream: geolocator.getPositionStream(locationOptions),
-//           builder: (context, AsyncSnapshot<Position> snapshot) {
-//             if (!snapshot.hasData) return CircularProgressIndicator();
-//             print(snapshot.data.speed);
-//             print(snapshot.data.speedAccuracy);
-//             print('-------------------------');
-
-//             if (flag) {
-//               print('sending');
-//               Firestore.instance.collection('gps_tracking').add({
-//                 'idBus': 'BS-001',
-//                 'latitude': '${snapshot.data.latitude}',
-//                 'longitude': '${snapshot.data.longitude}',
-//                 'speed': '${snapshot.data.speed}',
-//                 'date': '${Date.now().toString()}',
-//               });
-//             }
-
-//             return Column(
-//               crossAxisAlignment: CrossAxisAlignment.center,
-//               mainAxisSize: MainAxisSize.min,
-//               children: <Widget>[
-//                 Text('latitude: ${snapshot.data.latitude}'),
-//                 Text('longitude: ${snapshot.data.longitude}'),
-//                 Text('altitude: ${snapshot.data.altitude}'),
-//                 Text('heading: ${snapshot.data.heading}'),
-//                 Text('speed: ${snapshot.data.speed}'),
-//                 Text('speedAccuracy: ${snapshot.data.speedAccuracy}'),
-//               ],
-//             );
-//           },
-//         ),
-//       ),

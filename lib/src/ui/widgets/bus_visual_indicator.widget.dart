@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:mobility_project_mobile_2020/src/ui/widgets/app_bar_title_text.widget.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
@@ -11,6 +13,15 @@ class BusVisualIndicator extends StatefulWidget {
 }
 
 class _BusVisualIndicatorState extends State<BusVisualIndicator> {
+  final Geolocator geolocator = Geolocator()
+    ..forceAndroidLocationManager = true;
+
+  final LocationOptions locationOptions = LocationOptions(
+    accuracy: LocationAccuracy.bestForNavigation,
+    distanceFilter: 0,
+    timeInterval: 7500,
+  );
+
   Random random = new Random();
   int val = 0;
   String text = '';
@@ -59,23 +70,38 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
           height: 16.0,
         ),
         Text('Posición Actual'),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            AppBarTitleText(
-              subtitle: '-16.9846513',
-              title: 'Latitud',
-            ),
-            AppBarTitleText(
-              subtitle: '-16.9846513',
-              title: 'Longitud',
-            ),
-            AppBarTitleText(
-              subtitle: '-16.9846513',
-              title: 'Velocidad Aprox.',
-            ),
-          ],
-        ),
+        StreamBuilder(
+            stream: geolocator.getPositionStream(locationOptions),
+            builder: (context, AsyncSnapshot<Position> snapshot) {
+              print(snapshot.hasData);
+              if (!snapshot.hasData) return CircularProgressIndicator();
+              Firestore.instance.collection('gps_tracking').add({
+                'idBus': 'BS-001',
+                'latitude': '${snapshot.data.latitude}',
+                'longitude': '${snapshot.data.longitude}',
+                'speed': '${snapshot.data.speed}',
+                'date': '${DateTime.now().toString()}',
+              });
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  AppBarTitleText(
+                    subtitle:
+                        snapshot.data.latitude.toStringAsFixed(6).toString(),
+                    title: 'Latitud',
+                  ),
+                  AppBarTitleText(
+                    subtitle:
+                        snapshot.data.longitude.toStringAsFixed(6).toString(),
+                    title: 'Longitud',
+                  ),
+                  AppBarTitleText(
+                    subtitle: snapshot.data.speed.toStringAsFixed(3).toString(),
+                    title: 'Velocidad Aprox.',
+                  ),
+                ],
+              );
+            }),
         SizedBox(
           height: 16.0,
         ),
