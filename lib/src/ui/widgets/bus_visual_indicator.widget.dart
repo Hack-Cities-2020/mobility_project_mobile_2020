@@ -13,8 +13,7 @@ class BusVisualIndicator extends StatefulWidget {
 }
 
 class _BusVisualIndicatorState extends State<BusVisualIndicator> {
-  final Geolocator geolocator = Geolocator()
-    ..forceAndroidLocationManager = true;
+  Geolocator geolocator = Geolocator();
 
   final LocationOptions locationOptions = LocationOptions(
     accuracy: LocationAccuracy.bestForNavigation,
@@ -28,33 +27,34 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
   Color color = Colors.grey[200];
   IconData icon = Icons.space_bar;
 
+  Timer timer;
+  Position _position =
+      Position(altitude: 0.0, speed: 0.0, latitude: 0.0, longitude: 0.0);
+
+  StreamSubscription positionStream;
   double start = 48;
   double end = 56;
 
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 3), (timer) {
-      val = random.nextInt(9);
-      print(val);
-      if (val < 4) {
-        color = Colors.yellow.shade600;
-        text = 'Bajar Velocidad';
-        icon = Icons.arrow_downward;
-      }
-      if (val >= 4 && val < 6) {
-        color = Colors.green.shade600;
-        text = 'Mantener Velocidad';
-        icon = Icons.space_bar;
-      }
-      if (val >= 6) {
-        color = Colors.orange.shade600;
-
-        text = 'Aumentar Velocidad';
-        icon = Icons.arrow_upward;
-      }
-      setState(() {});
+    positionStream = geolocator
+        .getPositionStream(locationOptions)
+        .listen((Position position) {
+      print(position.toString());
+      // Firestore.instance.collection('gps_tracking').add({
+      //   'idBus': 'BS-001',
+      //   'latitude': '${snapshot.data.latitude}',
+      //   'longitude': '${snapshot.data.longitude}',
+      //   'speed': '${snapshot.data.speed}',
+      //   'date': '${DateTime.now().toString()}',
+      // });
+      setState(() {
+        _position = position;
+      });
     });
+
+    // y
   }
 
   @override
@@ -70,38 +70,23 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
           height: 16.0,
         ),
         Text('Posición Actual'),
-        StreamBuilder(
-            stream: geolocator.getPositionStream(locationOptions),
-            builder: (context, AsyncSnapshot<Position> snapshot) {
-              print(snapshot.hasData);
-              if (!snapshot.hasData) return CircularProgressIndicator();
-              Firestore.instance.collection('gps_tracking').add({
-                'idBus': 'BS-001',
-                'latitude': '${snapshot.data.latitude}',
-                'longitude': '${snapshot.data.longitude}',
-                'speed': '${snapshot.data.speed}',
-                'date': '${DateTime.now().toString()}',
-              });
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  AppBarTitleText(
-                    subtitle:
-                        snapshot.data.latitude.toStringAsFixed(6).toString(),
-                    title: 'Latitud',
-                  ),
-                  AppBarTitleText(
-                    subtitle:
-                        snapshot.data.longitude.toStringAsFixed(6).toString(),
-                    title: 'Longitud',
-                  ),
-                  AppBarTitleText(
-                    subtitle: snapshot.data.speed.toStringAsFixed(3).toString(),
-                    title: 'Velocidad Aprox.',
-                  ),
-                ],
-              );
-            }),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            AppBarTitleText(
+              subtitle: _position.latitude.toStringAsFixed(6).toString(),
+              title: 'Latitud',
+            ),
+            AppBarTitleText(
+              subtitle: _position.longitude.toStringAsFixed(6).toString(),
+              title: 'Longitud',
+            ),
+            AppBarTitleText(
+              subtitle: _position.speed.toStringAsFixed(3).toString(),
+              title: 'Velocidad Aprox.',
+            ),
+          ],
+        ),
         SizedBox(
           height: 16.0,
         ),
@@ -129,5 +114,13 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    positionStream.cancel();
+    super.dispose();
+    print('**---- Dispose ----**');
+    positionStream.cancel();
   }
 }
