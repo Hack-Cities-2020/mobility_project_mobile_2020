@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobility_project_mobile_2020/src/provider/routes.provider.dart';
+import 'package:mobility_project_mobile_2020/src/ui/pages/map/map.page.dart';
 import 'package:mobility_project_mobile_2020/src/ui/widgets/bus_drawer.widget.dart';
 
 class RoutePage extends StatelessWidget {
@@ -28,9 +30,17 @@ class RoutePage extends StatelessWidget {
                 separatorBuilder: (_, index) => Divider(),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, int index) {
+                  List<LatLng> _list = toLatLng(snapshot.data[index]['path']);
                   return ListTile(
                     title: Text(snapshot.data[index]['name']),
                     subtitle: Text(snapshot.data[index]['status']),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MapPage(listPoints: _list)));
+                    },
                   );
                 },
               );
@@ -39,5 +49,15 @@ class RoutePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<LatLng> toLatLng(List<dynamic> list) {
+    List<LatLng> aux = [];
+
+    for (var item in list) {
+      aux.add(LatLng(item['lat'], item['lng']));
+    }
+
+    return aux;
   }
 }

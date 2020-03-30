@@ -62,7 +62,7 @@ class BusDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.notification_important),
+                    leading: Icon(Icons.message),
                     title: Text('Notificar un imprevisto'),
                   ),
                   // ListTile(
@@ -74,7 +74,7 @@ class BusDrawer extends StatelessWidget {
                     title: Text('Historico de Rendimiento'),
                   ),
                   ListTile(
-                    leading: Icon(Icons.history),
+                    leading: Icon(Icons.input),
                     title: Text('Cerrar Sesion'),
                   ),
                 ],
