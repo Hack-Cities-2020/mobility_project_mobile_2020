@@ -24,7 +24,8 @@ class RoutePage extends StatelessWidget {
             builder: (context, AsyncSnapshot<List> snapshot) {
               if (!snapshot.hasData)
                 return Center(child: CircularProgressIndicator());
-              return ListView.builder(
+              return ListView.separated(
+                separatorBuilder: (_, index) => Divider(),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, int index) {
                   return ListTile(
