@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
               // color: Colors.white,
               ),
         ),
-        // iconTheme: IconThemeData(color: Colors.white),
       ),
       home: HomePage(),
     );

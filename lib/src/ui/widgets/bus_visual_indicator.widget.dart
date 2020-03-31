@@ -62,12 +62,24 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
-        Text(
-          'Información GPS del Bus',
-          style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w700),
+        SizedBox(
+          height: 8.0,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            AppBarTitleText(
+              title: 'Bus',
+              subtitle: 'Bs-206',
+            ),
+            AppBarTitleText(
+              title: 'Recorrido',
+              subtitle: 'Irpavi - PUC',
+            ),
+          ],
         ),
         SizedBox(
-          height: 16.0,
+          height: 8.0,
         ),
         Text('Posición Actual'),
         Row(
@@ -88,14 +100,14 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
           ],
         ),
         SizedBox(
-          height: 16.0,
+          height: 8.0,
         ),
         Text(
           text,
           style: TextStyle(fontSize: 24.0),
         ),
         SizedBox(
-          height: 16.0,
+          height: 8.0,
         ),
         Icon(
           icon,

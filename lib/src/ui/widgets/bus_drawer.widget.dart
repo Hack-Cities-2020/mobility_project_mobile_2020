@@ -25,7 +25,24 @@ class BusDrawer extends StatelessWidget {
               child: ListView(
                 children: <Widget>[
                   ListTile(
-                    leading: Icon(Icons.map),
+                    leading: Icon(
+                      Icons.home,
+                      color: Colors.red,
+                    ),
+                    title: Text('Inicio'),
+                    onTap: () {
+                      // Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RoutePage(),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.map, color: Colors.red),
                     title: Text('List de Rutas'),
                     onTap: () {
                       // Navigator.pop(context);
@@ -39,7 +56,10 @@ class BusDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.directions_bus),
+                    leading: Icon(
+                      Icons.directions_bus,
+                      color: Colors.red,
+                    ),
                     title: Text('Lista de buses'),
                     onTap: () {
                       Navigator.push(
@@ -51,7 +71,10 @@ class BusDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.notification_important),
+                    leading: Icon(
+                      Icons.notification_important,
+                      color: Colors.red,
+                    ),
                     title: Text('Notificaciones'),
                     onTap: () {
                       Navigator.push(
@@ -63,7 +86,7 @@ class BusDrawer extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.message),
+                    leading: Icon(Icons.message, color: Colors.red),
                     title: Text('Notificar un imprevisto'),
                     onTap: () {
                       Navigator.push(
@@ -75,16 +98,22 @@ class BusDrawer extends StatelessWidget {
                     },
                   ),
                   // ListTile(
-                  //   leading: Icon(Icons.message),
+                  //   leading: Icon(Icons.mess ,color: Colors.red,age),
                   //   title: Text('Mensajes'),
                   // ),
                   ListTile(
-                    leading: Icon(Icons.history),
+                    leading: Icon(
+                      Icons.history,
+                      color: Colors.red,
+                    ),
                     title: Text('Historico de Rendimiento'),
                   ),
                   Divider(),
                   ListTile(
-                    leading: Icon(Icons.input),
+                    leading: Icon(
+                      Icons.input,
+                      color: Colors.red,
+                    ),
                     title: Text('Cerrar Sesion'),
                   ),
                 ],

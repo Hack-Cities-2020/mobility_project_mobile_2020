@@ -21,17 +21,16 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         drawer: BusDrawer(),
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black87),
           backgroundColor: Colors.white,
-          leading: Center(
-            child: AppBarTitleText(
-              title: 'Bus',
-              subtitle: 'Bs-206',
-            ),
-          ),
           centerTitle: true,
-          title: AppBarTitleText(
-            title: 'Recorrido',
-            subtitle: 'Irpavi - PUC',
+          title: Text(
+            'Información GPS del Bus',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w700,
+              color: Colors.black87,
+            ),
           ),
         ),
         body: Container(
@@ -39,12 +38,12 @@ class HomePage extends StatelessWidget {
           constraints: BoxConstraints.expand(),
           child: Column(
             children: <Widget>[
-              _buildIndicadorBuses(),
-              Divider(),
               Expanded(
                 flex: 3,
                 child: BusVisualIndicator(),
-              )
+              ),
+              Divider(),
+              _buildIndicadorBuses(),
             ],
           ),
         ),
