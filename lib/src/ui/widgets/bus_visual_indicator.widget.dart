@@ -63,13 +63,13 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
         .getPositionStream(locationOptions)
         .listen((Position position) {
       print(position.toString());
-      // Firestore.instance.collection('gps_tracking').add({
-      //   'idBus': 'BS-001',
-      //   'latitude': '${snapshot.data.latitude}',
-      //   'longitude': '${snapshot.data.longitude}',
-      //   'speed': '${snapshot.data.speed}',
-      //   'date': '${DateTime.now().toString()}',
-      // });
+      Firestore.instance.collection('gps_tracking').add({
+        'idBus': '1',
+        'latitude': '${position.latitude}',
+        'longitude': '${position.longitude}',
+        'speed': '${position.speed}',
+        'date': '${DateTime.now().toString()}',
+      });
       setState(() {
         _position = position;
       });
