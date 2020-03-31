@@ -38,7 +38,15 @@ App Marco Leonardini
 Diseño App Danna Calle
 
 ## Capturas de pantalla
-Incluir logos o capturas de pantalla de las interfaces mas relevantes del proyecto.
+
+
+![ui challenge](https://raw.githubusercontent.com/Hack-Cities-2020/mobility_project_mobile_2020/master/scree_1.png)
+
+
+![ui challenge](https://raw.githubusercontent.com/Hack-Cities-2020/mobility_project_mobile_2020/master/screen_2.png)
+
+
+![ui challenge](https://raw.githubusercontent.com/Hack-Cities-2020/mobility_project_mobile_2020/master/screen_3Screenshot_2020-03-31-17-18-54.png)
 
 ## Licencia
 
