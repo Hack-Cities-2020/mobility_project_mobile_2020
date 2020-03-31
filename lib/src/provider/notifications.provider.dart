@@ -1,10 +1,5 @@
-import 'package:http/http.dart' as http;
-
 class NotificationsProvider {
   static Future<List> getNotifications() async {
-    // var response = await http.get('http://192.168.0.108:5000/api/vehicle');
-    // return jsonDecode(response.body);
-
     return [
       {
         'notification':

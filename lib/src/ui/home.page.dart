@@ -3,7 +3,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:mobility_project_mobile_2020/src/ui/widgets/bus_drawer.widget.dart';
 import 'package:mobility_project_mobile_2020/src/ui/widgets/bus_visual_indicator.widget.dart';
 
-import 'widgets/app_bar_title_text.widget.dart';
 import 'widgets/bus_indicator.widget.dart';
 
 class HomePage extends StatelessWidget {

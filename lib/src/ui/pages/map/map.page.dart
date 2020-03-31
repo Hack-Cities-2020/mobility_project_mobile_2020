@@ -7,7 +7,7 @@ class MapPage extends StatelessWidget {
 
   MapPage({this.listCheckPoints, this.listRoutePoints});
 
-  List<LatLng> latlng = List();
+  final List<LatLng> latlng = List();
 
   final Set<Polyline> _polyline = {};
 
