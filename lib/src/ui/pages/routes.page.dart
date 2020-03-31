@@ -35,6 +35,13 @@ class RoutePage extends StatelessWidget {
                   List<Marker> _listCheckPoints =
                       toMarker(snapshot.data[index]['checkpoints']);
                   return ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.blueAccent,
+                      child: Icon(
+                        Icons.map,
+                        color: Colors.white,
+                      ),
+                    ),
                     title: Text(snapshot.data[index]['name']),
                     subtitle: Text(snapshot.data[index]['status']),
                     onTap: () {

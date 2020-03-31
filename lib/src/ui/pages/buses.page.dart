@@ -29,6 +29,13 @@ class BusesPage extends StatelessWidget {
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, int index) {
                   return ListTile(
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.orangeAccent,
+                      child: Icon(
+                        Icons.directions_bus,
+                        color: Colors.blueGrey.shade800,
+                      ),
+                    ),
                     title: Text(snapshot.data[index]['itinerario']),
                     subtitle: Text(snapshot.data[index]['conductor']),
                   );

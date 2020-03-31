@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobility_project_mobile_2020/src/ui/pages/buses.page.dart';
 import 'package:mobility_project_mobile_2020/src/ui/pages/notifications.page.dart';
+import 'package:mobility_project_mobile_2020/src/ui/pages/notifier/notifier.page.dart';
 import 'package:mobility_project_mobile_2020/src/ui/pages/routes.page.dart';
 
 class BusDrawer extends StatelessWidget {
@@ -64,6 +65,14 @@ class BusDrawer extends StatelessWidget {
                   ListTile(
                     leading: Icon(Icons.message),
                     title: Text('Notificar un imprevisto'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotifierPage(),
+                        ),
+                      );
+                    },
                   ),
                   // ListTile(
                   //   leading: Icon(Icons.message),
@@ -73,6 +82,7 @@ class BusDrawer extends StatelessWidget {
                     leading: Icon(Icons.history),
                     title: Text('Historico de Rendimiento'),
                   ),
+                  Divider(),
                   ListTile(
                     leading: Icon(Icons.input),
                     title: Text('Cerrar Sesion'),
