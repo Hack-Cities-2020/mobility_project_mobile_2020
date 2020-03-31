@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapPage extends StatelessWidget {
-  final List<LatLng> listPoints;
+  final List<Marker> listCheckPoints;
+  final List<LatLng> listRoutePoints;
 
-  MapPage({this.listPoints});
+  MapPage({this.listCheckPoints, this.listRoutePoints});
 
   List<LatLng> latlng = List();
 
@@ -17,7 +18,7 @@ class MapPage extends StatelessWidget {
         polylineId: PolylineId('toString()'),
         visible: true,
         //latlng is List<LatLng>
-        points: listPoints,
+        points: listRoutePoints,
         color: Colors.blue,
         width: 4,
         consumeTapEvents: true,
@@ -34,6 +35,7 @@ class MapPage extends StatelessWidget {
               target: const LatLng(-16.496975592551678, -68.1870788574219),
               zoom: 10,
             ),
+            markers: listCheckPoints.toSet(),
             // markers: _markers.values.toSet(),
           ),
         ),

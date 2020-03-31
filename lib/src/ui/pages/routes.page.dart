@@ -30,7 +30,10 @@ class RoutePage extends StatelessWidget {
                 separatorBuilder: (_, index) => Divider(),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, int index) {
-                  List<LatLng> _list = toLatLng(snapshot.data[index]['path']);
+                  List<LatLng> _listRoutePoints =
+                      toLatLng(snapshot.data[index]['path']);
+                  List<Marker> _listCheckPoints =
+                      toMarker(snapshot.data[index]['checkpoints']);
                   return ListTile(
                     title: Text(snapshot.data[index]['name']),
                     subtitle: Text(snapshot.data[index]['status']),
@@ -38,8 +41,9 @@ class RoutePage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  MapPage(listPoints: _list)));
+                              builder: (context) => MapPage(
+                                  listRoutePoints: _listRoutePoints,
+                                  listCheckPoints: _listCheckPoints)));
                     },
                   );
                 },
@@ -56,6 +60,18 @@ class RoutePage extends StatelessWidget {
 
     for (var item in list) {
       aux.add(LatLng(item['lat'], item['lng']));
+    }
+
+    return aux;
+  }
+
+  List<Marker> toMarker(List<dynamic> list) {
+    List<Marker> aux = [];
+
+    for (var item in list) {
+      aux.add(Marker(
+          markerId: MarkerId(item['lat'].toString() + item['lng'].toString()),
+          position: LatLng(item['lat'], item['lng'])));
     }
 
     return aux;
