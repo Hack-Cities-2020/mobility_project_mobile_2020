@@ -38,6 +38,27 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
   @override
   void initState() {
     super.initState();
+    Timer.periodic(Duration(seconds: 3), (timer) {
+      val = random.nextInt(9);
+      print(val);
+      if (val < 4) {
+        color = Colors.yellow.shade600;
+        text = 'Bajar Velocidad';
+        icon = Icons.arrow_downward;
+      }
+      if (val >= 4 && val < 6) {
+        color = Colors.green.shade600;
+        text = 'Mantener Velocidad';
+        icon = Icons.space_bar;
+      }
+      if (val >= 6) {
+        color = Colors.orange.shade600;
+
+        text = 'Aumentar Velocidad';
+        icon = Icons.arrow_upward;
+      }
+      setState(() {});
+    });
     positionStream = geolocator
         .getPositionStream(locationOptions)
         .listen((Position position) {
@@ -99,9 +120,7 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
             ),
           ],
         ),
-        SizedBox(
-          height: 8.0,
-        ),
+        Divider(),
         Text(
           text,
           style: TextStyle(fontSize: 24.0),

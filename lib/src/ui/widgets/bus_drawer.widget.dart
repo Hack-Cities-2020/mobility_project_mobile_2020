@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobility_project_mobile_2020/src/ui/home.page.dart';
 import 'package:mobility_project_mobile_2020/src/ui/pages/buses.page.dart';
 import 'package:mobility_project_mobile_2020/src/ui/pages/notifications.page.dart';
 import 'package:mobility_project_mobile_2020/src/ui/pages/notifier/notifier.page.dart';
@@ -36,7 +37,7 @@ class BusDrawer extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => RoutePage(),
+                          builder: (context) => HomePage(),
                         ),
                       );
                     },
