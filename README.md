@@ -1,6 +1,6 @@
-# Hackfellas bus control system
+# App bus control system
 
-(Agregar esta sección en el caso de que el proyecto este compuesto por varios repositorios)
+
 ## Repo:  mobility_project_mobile_2020
 Esta aplicación permite el registro del dato cuando un bus pasa sobre una parada o punto de control, y de sta forma ayudar a gener una base de datos, se conecta a un servicio web expuesto en forma de **API REST**, utilizando sus distintos endpoints para la consulta de recursos disponibles. Todos estos recursos son mostrados en una aplicación móvil.
 
@@ -24,28 +24,21 @@ vehículos seguirán para cumplir el servicio de transporte público.
 ### Notificaciones
   - La app permite visualzar las notificaciones asignadas al chfer, bus, ruta, en general.
   - La app permite registras un incidente y notificar a la central de buses.
-  
-## Motivación
-Una breve descripción de la motivación detrás del proyecto.
-Responder lo siguiente: ¿por qué existe el proyecto? ¿Qué problema soluciona el proyecto?
 
-## Capturas de pantalla
-Incluir logos o capturas de pantalla de las interfaces mas relevantes del proyecto.
+
+
 
 ## Tecnologías/Frameworks utilizados
 Esta aplicación fue desarrollada utilizando el Framework Flutter basado en el lenguaje de programación Dart.
 Tiene conexion a una base de datos en tiempo real con Firebase.
 Tiene conexion a una base de datos de información.
 
-## Funcionalidades mas importantes
-Responder: ¿Cuáles son las funcionalidades mas interesantes de tu proyecto?
-
-## Instalación
-Proveer de una guía paso a paso con ejemplos sobre como obtener un ambiente de desarrollo corriendo con el presente repositorio. 
-En el caso de tener varios repositorios, realizar la guía correspondiente para cada uno.
-
 ## Creditos
-Nombrar a los participantes del equipo. Mencionar alguna libreria que fue útil o sirvió de inspiración para prototipar el proyecto. 
+App Marco Leonardini
+Diseño App Danna Calle
+
+## Capturas de pantalla
+Incluir logos o capturas de pantalla de las interfaces mas relevantes del proyecto.
 
 ## Licencia
 
