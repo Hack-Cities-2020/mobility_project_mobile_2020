@@ -115,7 +115,7 @@ class _BusVisualIndicatorState extends State<BusVisualIndicator> {
               title: 'Longitud',
             ),
             AppBarTitleText(
-              subtitle: _position.speed.toStringAsFixed(3).toString(),
+              subtitle: _position.speed.toStringAsFixed(3).toString() + ' km/h',
               title: 'Velocidad Aprox.',
             ),
           ],

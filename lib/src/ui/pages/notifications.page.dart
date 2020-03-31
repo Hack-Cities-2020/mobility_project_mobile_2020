@@ -12,7 +12,7 @@ class NotificationsPage extends StatelessWidget {
           backgroundColor: Colors.white,
           centerTitle: true,
           title: Text(
-            'Rutas de Buses',
+            'Notificaciones',
             style: TextStyle(color: Colors.black),
           ),
           iconTheme: IconThemeData(color: Colors.black87),
