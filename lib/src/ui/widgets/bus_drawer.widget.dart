@@ -120,6 +120,25 @@ class BusDrawer extends StatelessWidget {
                 ],
               ),
             ),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.code,
+                  size: 18,
+                  color: Colors.red,
+                ),
+                SizedBox(
+                  width: 8.0,
+                ),
+                Text(
+                  'Team Hack Fellas @ 2020',
+                  style: TextStyle(fontSize: 10.0, color: Colors.black87),
+                ),
+              ],
+            ),
+            // Spacer(),
           ],
         ),
       ),

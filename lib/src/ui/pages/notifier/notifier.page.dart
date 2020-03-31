@@ -15,6 +15,14 @@ class NotifierPage extends StatelessWidget {
       'title': 'Problemas de capacidad',
       'subtitle': 'En el tope de capacidad de pasajeros',
     },
+    {
+      'title': 'Cambio de Ruta',
+      'subtitle': 'Cambios de rutas imprevistas',
+    },
+    {
+      'title': 'Informe de paradas',
+      'subtitle': 'Paradas dañadas o maltratadas',
+    }
   ];
   @override
   Widget build(BuildContext context) {
